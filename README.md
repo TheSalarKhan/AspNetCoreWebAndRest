@@ -8,6 +8,7 @@ a traditional web frontend as well as a REST API for integration with mobile app
 *   ASP NET CORE 1.1.0
 *   Razor Templating engine
 *   Entity Framework Core 1.1.0 (MS-SQL SERVER by default)
+*   Database seeder.
 *   Dependancy Injection
 *   Swagger UI, for REST API documentation
 *   Command line tools for EntityFrameworkCore
@@ -65,21 +66,23 @@ I could not find a way around structuring views though!
 
 
 ## Magic numbers!
+* Constant/Constants.cs is where all the magic numbers must be declared.
 
-## Overview
+## Deploy to azure!
+This template is deployment ready for AZURE, simple create a project and setup git deployment method. After that whenever
+you push to AZURE the project will get deployed.
 
-*   [Conceptual overview of what is ASP.NET Core](https://go.microsoft.com/fwlink/?LinkId=518008)
-*   [Fundamentals of ASP.NET Core such as Startup and middleware.](https://go.microsoft.com/fwlink/?LinkId=699320)
-*   [Working with Data](https://go.microsoft.com/fwlink/?LinkId=398602)
-*   [Security](https://go.microsoft.com/fwlink/?LinkId=398603)
-*   [Client side development](https://go.microsoft.com/fwlink/?LinkID=699321)
-*   [Develop on different platforms](https://go.microsoft.com/fwlink/?LinkID=699322)
-*   [Read more on the documentation site](https://go.microsoft.com/fwlink/?LinkID=699323)
+## Adding and running migrations
+After you have created EF models in your Module/your_module/Models folder under the namespace Application.Models. Simply run
+* $ dotnet ef database migrations add migartion_name
+This will add a migration. To apply the migration to the database, make sure you have provided the connection string in Database/ApplicationDbContext.cs
+and then run:
+* $ dotnet ef database update
+If you want to clean the database then execute '$ dotnet ef database update 0' first.
 
-## Run & Deploy
+## Database Seeder.
+The database seeder is located at Database/DbSeeder/DbSeeder.cs. The seeder simply provides you access to your database context in the method 'SeedData()'
+whatever you write in there will be run the next time you execute the application.
 
-*   [Run your app](https://go.microsoft.com/fwlink/?LinkID=517851)
-*   [Run tools such as EF migrations and more](https://go.microsoft.com/fwlink/?LinkID=517853)
-*   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
-
-We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+## Run Application
+To run the app simply write: 'dotnet run'. Make sure to run 'dotnet restore' the first time, and after everytime you make a change to project.json
