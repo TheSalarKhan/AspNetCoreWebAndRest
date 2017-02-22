@@ -1,3 +1,5 @@
+# Use this template with VSCode it works AWESOME!
+
 # Hello world!
 
 This project is a template for making web applications in ASP NET. It is specifically designed for applications that require
