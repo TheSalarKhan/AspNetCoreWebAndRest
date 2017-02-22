@@ -392,7 +392,7 @@ namespace Application.Services
                 var db = _db;
 
                 string encryptedPassword = Utils.CreateMD5(updatePassword.password);
-                var obj = db.User.SingleOrDefault(b => b.Id == updatePassword.userID && b.Password == encryptedPassword);
+                var obj = db.User.SingleOrDefault(b => b.Id == updatePassword.UserId && b.Password == encryptedPassword);
                 if (obj != null)
                 {
                     obj.Password = Utils.CreateMD5(updatePassword.newPassword);
@@ -452,7 +452,7 @@ namespace Application.Services
             {
                 var db = _db;
 
-                var obj = db.User.SingleOrDefault(b => b.Id == updatedUserObj.userID);
+                var obj = db.User.SingleOrDefault(b => b.Id == updatedUserObj.UserId);
                 if (obj != null)
                 {
                     obj.Phone = updatedUserObj.phone;

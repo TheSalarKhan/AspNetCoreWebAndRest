@@ -1,24 +1,70 @@
-# Welcome to ASP.NET Core
+# Hello world!
 
-We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
-
-You've created a new ASP.NET Core project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
+This project is a template for making web applications in ASP NET. It is specifically designed for applications that require
+a traditional web frontend as well as a REST API for integration with mobile applications/
 
 ## This application consists of:
 
-*   Sample pages using ASP.NET Core MVC
-*   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
-*   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
+*   ASP NET CORE 1.1.0
+*   Razor Templating engine
+*   Entity Framework Core 1.1.0 (MS-SQL SERVER by default)
+*   Dependancy Injection
+*   Swagger UI, for REST API documentation
+*   Command line tools for EntityFrameworkCore
+*   Braintree payment gateway
+*   SendGrid emailing API.
 
-## How to
 
-*   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
-*   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
-*   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
-*   [Use logging to log a message.](https://go.microsoft.com/fwlink/?LinkId=699316)
-*   [Add packages using NuGet.](https://go.microsoft.com/fwlink/?LinkId=699317)
-*   [Add client packages using Bower.](https://go.microsoft.com/fwlink/?LinkId=699318)
-*   [Target development, staging or production environment.](https://go.microsoft.com/fwlink/?LinkId=699319)
+## Conventions
+
+Usually .NET CORE apps have the following directory structure which is not suitable for large projects. 
+When the number of files go up, it becomes confusing:
+* Usual .NET CORE APP:
+*   App/
+*       Controllers/
+*           Module1Controller.cs
+*           Module2Controller.cs
+*       Services/
+*           Module1Service.cs
+*           Module2Service.cs
+*       Models/
+*           Module1Model.cs
+*           Module2Model.cs
+
+But In this template we use the following directory structure, which is way more manageable. Inspired by Python's Django framework.
+* Super cool .NET CORE APP:
+*   App/
+*       Modules/
+*           Module1/
+*               Controllers/
+*                   Module1Controller.cs
+*               Services/
+*                   Module1Service.cs
+*               Models/
+*                   Module1Model.cs
+*               Entities/
+*                   Module1ReqRes.cs
+*           Module2/
+*               Controllers/
+*                   Module2Controller.cs
+*              Services/
+*                  Module2Service.cs
+*              Models/
+*                  Module2Model.cs
+*               Entities/
+*                   Module2ReqRes.cs
+
+I could not find a way around structuring views though!
+
+## Base classes!
+*   The module 'BaseModule' defines some base classes for Controllers, Models, Services, and request response objects.
+*   BaseController: Its a controller that implements injectable logic, just extend from it and implement the required constructor.
+*   BaseService: Its a service that implements injectable logic, just extend from it and implement the required constructor.
+*   BaseResponse: A basic response object.
+*   UserRequest: A request object with UserId attribute. Extend from this instead of declaring UserId whenever required. DRY (Don't repeat yourself).
+
+
+## Magic numbers!
 
 ## Overview
 

@@ -59,7 +59,7 @@ namespace Application.Controllers
     [Route("api/users/cancelAccount"), HttpPost]
 		public BaseResponse CancelAccount([FromBody] CancelAccountReqObj cancelObj)
         {
-            return new UserService(_db).CancelAccount(cancelObj.userID);
+            return new UserService(_db).CancelAccount(cancelObj.UserId);
         }
 
     }

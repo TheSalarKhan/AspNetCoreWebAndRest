@@ -5,10 +5,6 @@ namespace Application.Models
 {
     public class Users : BaseModel
     {
-        public Users()
-        {
-            
-        }
 
         public string Phone { get; set; }
         public string Name { get; set; }
